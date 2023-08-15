@@ -22,18 +22,22 @@ laf.dev 和 laf.run 的无法互通，他们不在一个 K8S 集群内！
 
 ```js
 import cloud from '@lafjs/cloud'
-import { createDb } from 'nw-db'
+import { createDb, createMongo } from 'nw-db'
 
 export default async function (ctx: FunctionContext) {
   // 填入上一步中获取的 uri 地址
   const uri = 'mongodb://sc64px:EuV9oK1F036zf89vGg8wb6WdqHqk7NiHN2xCig1iKB1y6vc5uoJSD7pbIIxk6h0t@mongodb-0.mongo.laf-system.svc.cluster.local:27017/sc64px?authSource=sc64px&replicaSet=rs0&w=majority' 
 
+  const db = cloud.database()
+  const res = await db.collection("user").get()
+  console.log(res)
+
   const db2 = await createDb(uri)
   const res2 = await db2.collection("user").get()
   console.log(res2)
 
-  const db = cloud.database()
-  const res = await db.collection("user").get()
-  console.log(res)
+  const { db, client } = await createMongo(uri)
+  const res3 = await db.collection("user").findOne()
+  console.log(res3)
 }
 ```
