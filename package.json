@@ -1,0 +1,29 @@
+{
+  "name": "nw-db",
+  "version": "0.0.6",
+  "description": "nw-db for Laf",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "pub": "npm version patch && npm run build && npm publish --access public"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "nightwhite",
+  "license": "ISC",
+  "dependencies": {
+    "database-proxy": "^1.0.0-beta.2",
+    "mongodb-uri": "^0.9.7",
+    "uglifyjs": "^2.4.11"
+  },
+  "devDependencies": {
+    "@types/mongodb-uri": "^0.9.1"
+  }
+}
