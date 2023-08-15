@@ -1,6 +1,6 @@
 {
   "name": "nw-db",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "nw-db for Laf",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
